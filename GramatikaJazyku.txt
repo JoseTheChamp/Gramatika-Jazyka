@@ -4,7 +4,8 @@ block = [ assign ";" | "if" "(" condition ")" "{" {block} "}" ] ;
 
 assign = ident "=" [expression | ident | number ] ;
 
-condition = "cond" ;
+condition = ["!"] expression condSym ["!"] expression | ["!"] expression ;
+condSym = ("=="|"<"|"<="|">"|">="|"||"|"&&"|"!=") ;
 
 expression = [ "+"|"-"] term { ("+"|"-") term};
 term = factor {("*"|"/") factor};
@@ -19,4 +20,4 @@ ident = alphaChar { alphaChar | digit} ;
 
 
 
-if( cond)  { S=4;B=7; } A=7;
+if( A == A-8)  { S=4;B=7; } A=7;
