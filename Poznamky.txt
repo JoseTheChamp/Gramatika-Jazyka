@@ -1,0 +1,15 @@
+
+1) co to znamená silně typované proměné
+2) 3 datové typy -> assign a define rozdelit
+3) def. funkcí
+4)Předávání parametru hodnotou
+/*
+interpret/kompilátor rovněž umožňuje definování nativních funkcí (pomocí 
+implementačního jazyka) („knihovní funkce“ – vstup a výstup na 
+obrazovku/klávesnice/souboru, konverze datových typů, …)
+*/
+Přímá a nepříma rekurze.
+
+
+++:
+Vol. globalni promene.

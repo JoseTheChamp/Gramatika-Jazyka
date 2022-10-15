@@ -1,7 +1,8 @@
 Program = {block} ;
 
-block = [ assign ";" | if | while ] ;
+block = [ assign ";" | if | while | call ";" ] ;
 
+call = ident "(" { ident ":" dataType "," | ident ":" dataType } ")" ;
 while = "while" "(" condition ")" "{" {block} "}" ;
 if = "if" "(" condition ")" assign | "if" "(" condition ")" "{" {block} "}" ;
 assign = ident "=" [expression | ident | number ] ;
@@ -9,9 +10,12 @@ assign = ident "=" [expression | ident | number ] ;
 condition = ["!"] expression condSym ["!"] expression | ["!"] expression ;
 condSym = ("=="|"<"|"<="|">"|">="|"||"|"&&"|"!=") ;
 
+
 expression = [ "+"|"-"] term { ("+"|"-") term} ;
 term = factor {("*"|"/") factor} ;
 factor = ident | number | "(" expression ")" ;
+
+dataType = "String" | "Int" | "Float" ;
 
 digitNonZero = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
 digit = "0" | digitNonZero ;
@@ -21,6 +25,4 @@ alphaChar = /[a-z]+/ | /[A-Z]+/ | "_";
 ident = alphaChar { alphaChar | digit | "_"} ;
 
 
-
-_ahojZS_s = 5;
-
+ahoj(A: String,b: Int,Cibule: Float);
