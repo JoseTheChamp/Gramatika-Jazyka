@@ -1,8 +1,10 @@
 Program = {block} ;
 
-block = [ assign | ident ] ";" ;
+block = [ assign ";" | "if" "(" condition ")" "{" {block} "}" ] ;
 
 assign = ident "=" [expression | ident | number ] ;
+
+condition = "cond" ;
 
 expression = [ "+"|"-"] term { ("+"|"-") term};
 term = factor {("*"|"/") factor};
@@ -17,7 +19,4 @@ ident = alphaChar { alphaChar | digit} ;
 
 
 
-A = 7; 
-B;
-C = A;
-D = A - 3 * 7;
+if( cond)  { S=4;B=7; } A=7;
