@@ -1,7 +1,9 @@
 Program = {block} ;
 
-block = [ assign ";" | if | while | call ";" ] ;
+block = [ assign ";" | if | while | call ";" | fun | return ";" ] ;
 
+return = "return" ident | expression ;
+fun = "fun" ident "(" { ident ":" dataType "," | ident ":" dataType } ")" [":" dataType] "{" {block} "}" ;
 call = ident "(" { ident ":" dataType "," | ident ":" dataType } ")" ;
 while = "while" "(" condition ")" "{" {block} "}" ;
 if = "if" "(" condition ")" assign | "if" "(" condition ")" "{" {block} "}" ;
@@ -25,4 +27,9 @@ alphaChar = /[a-z]+/ | /[A-Z]+/ | "_";
 ident = alphaChar { alphaChar | digit | "_"} ;
 
 
-ahoj(A: String,b: Int,Cibule: Float);
+
+
+fun Ahoj(Arg: Int,B: String): Int{
+A = 5;
+return A;
+}
