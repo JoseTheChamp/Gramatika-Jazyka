@@ -1,23 +1,26 @@
 Program = {block} ;
 
-block = [ assign ";" | "if" "(" condition ")" "{" {block} "}" ] ;
+block = [ assign ";" | if | while ] ;
 
+while = "while" "(" condition ")" "{" {block} "}" ;
+if = "if" "(" condition ")" assign | "if" "(" condition ")" "{" {block} "}" ;
 assign = ident "=" [expression | ident | number ] ;
 
 condition = ["!"] expression condSym ["!"] expression | ["!"] expression ;
 condSym = ("=="|"<"|"<="|">"|">="|"||"|"&&"|"!=") ;
 
-expression = [ "+"|"-"] term { ("+"|"-") term};
-term = factor {("*"|"/") factor};
-factor = ident | number | "(" expression ")";
+expression = [ "+"|"-"] term { ("+"|"-") term} ;
+term = factor {("*"|"/") factor} ;
+factor = ident | number | "(" expression ")" ;
 
 digitNonZero = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
 digit = "0" | digitNonZero ;
 number = digitNonZero {digit} ;
 
-alphaChar = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" ;
-ident = alphaChar { alphaChar | digit} ;
+alphaChar = /[a-z]+/ | /[A-Z]+/ | "_";
+ident = alphaChar { alphaChar | digit | "_"} ;
 
 
 
-if( A == A-8)  { S=4;B=7; } A=7;
+_ahojZS_s = 5;
+
