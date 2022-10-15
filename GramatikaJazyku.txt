@@ -1,13 +1,14 @@
 Program = {block} ;
 
-block = [ assign ";" | if | while | call ";" | fun | return ";" ] ;
+block = ( ( definition | assign | call | return ) ";")|(if | while | fun) ;
 
 return = "return" ident | expression ;
 fun = "fun" ident "(" { ident ":" dataType "," | ident ":" dataType } ")" [":" dataType] "{" {block} "}" ;
+definition = ("var" | "val") ident "kl" [":" dataType] ["=" (call | expression | ident | number | strLit)] ;
 call = ident "(" { ident ":" dataType "," | ident ":" dataType } ")" ;
 while = "while" "(" condition ")" "{" {block} "}" ;
 if = "if" "(" condition ")" assign | "if" "(" condition ")" "{" {block} "}" ;
-assign = ident "=" [expression | ident | number ] ;
+assign = ident "=" (expression | ident | number | strLit) ;
 
 condition = ["!"] expression condSym ["!"] expression | ["!"] expression ;
 condSym = ("=="|"<"|"<="|">"|">="|"||"|"&&"|"!=") ;
@@ -19,17 +20,60 @@ factor = ident | number | "(" expression ")" ;
 
 dataType = "String" | "Int" | "Float" ;
 
+strLit = '"'ident'"';
 digitNonZero = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
 digit = "0" | digitNonZero ;
 number = digitNonZero {digit} ;
 
 alphaChar = /[a-z]+/ | /[A-Z]+/ | "_";
-ident = alphaChar { alphaChar | digit | "_"} ;
+ident = alphaChar { alphaChar | digit } ;
+
+
+
+a = 5;
+var b = 8;
+
+Problem je ze var to bere jako ident a ne jako klic slovo
+-------------------------------------------
+-------------------------------------------
+Program = {block} ;
+
+block = ( ( assign | call | return ) ";")|(if | while | fun) ;
+
+return = "return" ident | expression ;
+fun = "fun" ident "(" { ident ":" dataType "," | ident ":" dataType } ")" [":" dataType] "{" {block} "}" ;
+call = ident "(" { ident ":" dataType "," | ident ":" dataType } ")" ;
+while = "while" "(" condition ")" "{" {block} "}" ;
+if = "if" "(" condition ")" assign | "if" "(" condition ")" "{" {block} "}" ;
+assign = ["var" | "val"] ident [":" dataType] ["=" (expression | ident | number | strLit)] ;
+
+condition = ["!"] expression condSym ["!"] expression | ["!"] expression ;
+condSym = ("=="|"<"|"<="|">"|">="|"||"|"&&"|"!=") ;
+
+
+expression = [ "+"|"-"] term { ("+"|"-") term} ;
+term = factor {("*"|"/") factor} ;
+factor = ident | number | "(" expression ")" ;
+
+dataType = "String" | "Int" | "Float" ;
+
+strLit = '"'ident'"';
+digitNonZero = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+digit = "0" | digitNonZero ;
+number = digitNonZero {digit} ;
+
+alphaChar = /[a-z]+/ | /[A-Z]+/ | "_";
+ident = alphaChar { alphaChar | digit } ;
+
 
 
 
 
 fun Ahoj(Arg: Int,B: String): Int{
-A = 5;
+Ap = 5;
+var A = 5;
 return A;
 }
+
+
+
