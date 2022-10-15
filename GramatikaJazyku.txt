@@ -1,0 +1,39 @@
+Program = "BEGIN"  {block} "END";
+block = ident str ;
+ident = alphaChar { alphaChar | digit} ;
+digitNonZero = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+digit = "0" | digitNonZero ;
+alphaChar = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" ;
+str = ";" ;
+
+
+
+
+
+Program = {block} ;
+statement = [ident "=" expression | ident "=" number | "if" "(" condition ")" statement | while "(" condition ")" "{" {block} "}" ] ";" ;
+ident = alphaChar { alphaChar | digit} ;
+digitNonZero = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+digit = "0" | digitNonZero ;
+alphaChar = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" ;
+number = digitNonZero {digit} ;
+condition = "AHOJ" ;
+
+
+
+100 working
+Program = {block} ;
+block = ident ";" ;
+ident = alphaChar { alphaChar | digit} ;
+digitNonZero = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+digit = "0" | digitNonZero ;
+alphaChar = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" ;
+
+Working numbers
+Program = {block} ;
+block = [ ident "=" number | ident ] ";" ;
+ident = alphaChar { alphaChar | digit} ;
+digitNonZero = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+digit = "0" | digitNonZero ;
+alphaChar = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" ;
+number = digitNonZero {digit} ;
