@@ -18,9 +18,15 @@ Chyba A: Int; je dovoleno.
 
 
 Otázky pro učitele: 
-1)Pokud usím dodržovat jazyk je tohle aka čísla a písmena dobré řešení (tokeny kompatibilita) ukazka A = 5;
-2)String literarní hodnota
-3)
+1)Pokud musím dodržovat jazyk je tohle aka čísla a písmena dobré řešení (tokeny kompatibilita) ukazka A = 5;
+2)String literarní hodnota - jak se řeší teď   strLit = '"'ident'"'; a jak aby uvnitř mohlo být cokoliv?
+3)Nefunguje definice tedy, program provede assign i když by se měl provést definition. Viz příklad.
+varA = 5;
+var A = 5;
+// identický výstup
+
+var A: Int = 5;  //nefunguje
+A = 8;
 
 *Nefunguí argumenty? a : dataType v definition
 
