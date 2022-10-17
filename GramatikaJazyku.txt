@@ -1,14 +1,14 @@
-Program = {block} ;
+Program = {statement} ;
 
-block = ( ( definition | assign | call | return ) ";")|(if | while | fun) ;
+statement = ( ( definition | assign | call | return ) ";") | (if | while | fun) ;
 
-return = "return" ident | expression ;
-fun = "fun" ident "(" { ident ":" dataType "," | ident ":" dataType } ")" [":" dataType] "{" {block} "}" ;
-definition = ("var" | "val") ident "kl" [":" dataType] ["=" (call | expression | ident | number | strLit)] ;
+return = "return" ( ident | expression | call) ;
+fun = "fun" ident "(" [ ident ":" dataType { "," ident ":" dataType } ] ")" [":" dataType] "{" {statement} "}" ;
+definition = ("var" | "val") ident [":" dataType] ["=" (call | expression | ident | number | strLit)] ;
 call = ident "(" { ident ":" dataType "," | ident ":" dataType } ")" ;
-while = "while" "(" condition ")" "{" {block} "}" ;
-if = "if" "(" condition ")" assign | "if" "(" condition ")" "{" {block} "}" ;
-assign = ident "=" (expression | ident | number | strLit) ;
+while = "while" "(" condition ")" "{" {statement} "}" ;
+if = "if" "(" condition ")" assign | "if" "(" condition ")" "{" {statement} "}" ;
+assign = ident "=" (number  | ident | expression | strLit) ;
 
 condition = ["!"] expression condSym ["!"] expression | ["!"] expression ;
 condSym = ("=="|"<"|"<="|">"|">="|"||"|"&&"|"!=") ;
@@ -16,64 +16,15 @@ condSym = ("=="|"<"|"<="|">"|">="|"||"|"&&"|"!=") ;
 
 expression = [ "+"|"-"] term { ("+"|"-") term} ;
 term = factor {("*"|"/") factor} ;
-factor = ident | number | "(" expression ")" ;
+factor = number | ident | "(" expression ")" ;
 
 dataType = "String" | "Int" | "Float" ;
 
-strLit = '"'ident'"';
-digitNonZero = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
-digit = "0" | digitNonZero ;
-number = digitNonZero {digit} ;
-
-alphaChar = /[a-z]+/ | /[A-Z]+/ | "_";
-ident = alphaChar { alphaChar | digit } ;
+strLit = /"[^"]*"/;
+number = /(0|[1-9][0-9]*)/ ;
+ident = /[a-zA-Z_][a-zA-Z0-9_]*/ ;
 
 
 
-a = 5;
-var b = 8;
-
-Problem je ze var to bere jako ident a ne jako klic slovo
--------------------------------------------
--------------------------------------------
-Program = {block} ;
-
-block = ( ( assign | call | return ) ";")|(if | while | fun) ;
-
-return = "return" ident | expression ;
-fun = "fun" ident "(" { ident ":" dataType "," | ident ":" dataType } ")" [":" dataType] "{" {block} "}" ;
-call = ident "(" { ident ":" dataType "," | ident ":" dataType } ")" ;
-while = "while" "(" condition ")" "{" {block} "}" ;
-if = "if" "(" condition ")" assign | "if" "(" condition ")" "{" {block} "}" ;
-assign = ["var" | "val"] ident [":" dataType] ["=" (expression | ident | number | strLit)] ;
-
-condition = ["!"] expression condSym ["!"] expression | ["!"] expression ;
-condSym = ("=="|"<"|"<="|">"|">="|"||"|"&&"|"!=") ;
-
-
-expression = [ "+"|"-"] term { ("+"|"-") term} ;
-term = factor {("*"|"/") factor} ;
-factor = ident | number | "(" expression ")" ;
-
-dataType = "String" | "Int" | "Float" ;
-
-strLit = '"'ident'"';
-digitNonZero = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
-digit = "0" | digitNonZero ;
-number = digitNonZero {digit} ;
-
-alphaChar = /[a-z]+/ | /[A-Z]+/ | "_";
-ident = alphaChar { alphaChar | digit } ;
-
-
-
-
-
-fun Ahoj(Arg: Int,B: String): Int{
-Ap = 5;
-var A = 5;
-return A;
-}
-
-
-
+varA = 50;
+var Bobik55: String = "Ahoj?s44";
