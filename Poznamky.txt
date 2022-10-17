@@ -31,3 +31,13 @@ A = 8;
 *Nefunguí argumenty? a : dataType v definition
 
 ["=" (call | expression | ident | number | strLit)]
+
+
+
+*rozdil mezi expression a ident u return;
+
+var A: Int = 5;
+var b = 2;
+fun secti(cislo1: Int,cislo2: Int){
+return cislo1 + cislo2;
+}

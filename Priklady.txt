@@ -1,0 +1,27 @@
+1) Definition, assign, retrun, fun, call
+var A: Int = 5;
+var b = 2;
+fun secti(cislo1: Int,cislo2: Int){
+return cislo1 + cislo2;
+}
+A = secti(A,b);
+
+
+2) Floats, strings, if-else, condition
+val pozdrav: String = "Ahoj, teplota venku je ";
+var teplota: Float;
+teplota = 18.87;
+if(teplota > 24){
+print(pozdrav,"docela teplo:",teplota);
+}else{
+print(pozdrav,"docela chladno:",teplota);
+}
+
+
+3)
+var x = 0;
+var sum: Int = 0;
+while(x >= 4){
+sum = sum + x;
+}
+print(sum);
